@@ -34,7 +34,7 @@ function getUserInfo() {
     //   Authorization: localStorage.getItem('token') || ''
     // },
     success: function (res) {
-      console.log(res)
+      // console.log(res)
       if (res.status !== 0) return layui.layer.msg(res.message)
       //渲染用户头像
       renderAvatar(res.data)
@@ -42,19 +42,19 @@ function getUserInfo() {
     //控制用户的访问权限
     //在发起ajax请求的时候 不论成功还是失败 都是调用回调函数
     //complete
-    // complete: function (res) {
-    //   console.log(res)
-    //   console.log('complete')
-    //   console.log(res.responseJSON)
-    //   //这里要做两件事 
-    //   //1.清除token
-    //   //2.强制跳转到login.html
-    //   if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
-    //     localStorage.removeItem('token')
-    //     location.href = './login.html'
-    //   }
+    complete: function (res) {
+      // console.log(res)
+      // console.log('complete')
+      // console.log(res.responseJSON)
+      //这里要做两件事 
+      //1.清除token
+      //2.强制跳转到login.html
+      if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
+        localStorage.removeItem('token')
+        location.href = './login.html'
+      }
 
-    // }
+    }
   });
   //渲染用户头像
   function renderAvatar(user) {

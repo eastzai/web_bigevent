@@ -5,7 +5,7 @@ $(function () {
   //方便后续代码的修改
   $.ajaxPrefilter(function (options) {
     options.url = 'http://www.liulongbin.top:3007' + options.url
-    console.log(options.url)
+    // console.log(options.url)
 
     //统一为有权限的接口设置请求头
     //加判断 如果url中有 /my/ 才设置请求头
@@ -17,9 +17,9 @@ $(function () {
 
     //全局统一挂载complete回调函数
     options.complete = function (res) {
-      console.log(res)
-      console.log('complete')
-      console.log(res.responseJSON)
+      // console.log(res)
+      // console.log('complete')
+      // console.log(res.responseJSON)
       //这里要做两件事 
       //1.清除token
       //2.强制跳转到login.html
